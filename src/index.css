@@ -1,3 +1,42 @@
 * {
-  background-color: red;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+div {
+  border: 1px solid black;
+}
+
+#wrapper {
+  display: flex;
+  height: 100%;
+}
+
+#wrapper > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  position: relative;
+}
+
+h2 {
+  margin: 20px;
+  position: absolute;
+  top: 20px;
+}
+
+#playBtn {
+  position: absolute;
+  bottom: 20px;
+  margin: 20px;
+}
+
+.map {
+  width: 200px;
+  height: 200px;
 }
