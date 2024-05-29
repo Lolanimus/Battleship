@@ -39,4 +39,13 @@ h2 {
 .map {
   width: 200px;
   height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.map > div {
+  width: 10%;
+  height: 10%;
+  flex-basis: 5;
+  border: 0.1px solid black;
 }

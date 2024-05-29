@@ -1,9 +1,14 @@
 /* eslint-disable no-const-assign */
 /* eslint-disable no-plusplus */
+
+/**
+ * @jest-environment jsdom
+ */
 import Ship from "./ship";
 
 export default class Gameboard {
-  constructor() {
+  constructor(map) {
+    this.map = map;
     this.isAllShipsSunk = false;
     this.attacks = [];
     this.missedAttacks = [];
@@ -33,6 +38,14 @@ export default class Gameboard {
     }
 
     if (this.ships.every((obj) => obj.isSunk())) this.isAllShipsSunk = true;
+  }
+
+  renderGrid() {
+    let inHtml = "";
+    for (let i = 0; i < 100; i++) {
+      inHtml += "<div></div>";
+    }
+    this.map.innerHTML += inHtml;
   }
 
   getGrid() {
