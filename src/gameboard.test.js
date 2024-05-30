@@ -65,3 +65,19 @@ test("createShip works", () => {
     elementNum: formula,
   });
 });
+
+test("createShip works(y direction)", () => {
+  const gb1 = new Gameboard();
+  const x = 0;
+  const y = 0;
+  const ship30 = new Ship(3, 0);
+  gb1.createShip(x, y, ship30, "y");
+  const formula = 10 * x + y;
+  expect(gb1.getGrid()[x][y]).toStrictEqual({
+    shipInfo: {
+      id: ship30.id,
+      next: gb1.getGrid()[x + 1][y],
+    },
+    elementNum: formula,
+  });
+});
