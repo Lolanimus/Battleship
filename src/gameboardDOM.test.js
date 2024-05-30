@@ -23,11 +23,11 @@ test("renders a grid on a map", () => {
 test("places a ship DOM", () => {
   const myMap = document.getElementById("myMap");
   const gb1 = new Gameboard(myMap);
-  const ship30 = new Ship(3, 0);
+  const ship30 = new Ship(6, 0);
   const ship31 = new Ship(3, 1);
   gb1.renderGrid();
   gb1.createShip(0, 0, ship30);
   gb1.createShip(0, 0, ship31);
   gb1.placeShipDOM(0, 0, ship30.head);
-  expect(myMap.children).toBe("ship");
+  expect(myMap.children).toBe(true);
 });

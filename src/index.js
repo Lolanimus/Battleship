@@ -20,4 +20,4 @@ const opponentGb = opponent.getGameboard();
 opponentGb.renderGrid();
 
 const myShip30 = new Ship(3, 0);
-meGb.createShip(0, 0, myShip30);
+meGb.createShip(8, 8, myShip30);
