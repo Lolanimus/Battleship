@@ -22,7 +22,7 @@ export default class Gameboard {
   placeShip(x, y, len, id) {
     if (len === 0) return null;
     this.grid[x][y] = {
-      elementNum: 10 * x + y, // [5][5] => 45
+      elementNum: 10 * x + y,
       shipInfo: {
         id,
         next: this.placeShip(x, y + 1, len - 1, id),

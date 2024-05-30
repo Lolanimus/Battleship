@@ -5,8 +5,8 @@ import Ship from "./ship";
 
 console.log("kek");
 
-const myMap = document.getElementById("myMap");
-const opponentMap = document.getElementById("opponentMap");
+const myMap = document.getElementById("myContainers");
+const opponentMap = document.getElementById("opponentContainers");
 
 console.log(myMap);
 
@@ -20,4 +20,4 @@ const opponentGb = opponent.getGameboard();
 opponentGb.renderGrid();
 
 const myShip30 = new Ship(3, 0);
-meGb.createShip(8, 8, myShip30);
+meGb.createShip(1, 1, myShip30);
