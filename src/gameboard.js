@@ -35,6 +35,11 @@ export default class Gameboard {
   }
 
   createShip(x, y, ship, direction = "x") {
+    if (direction === "x" && y + ship.length > 9) {
+      y = 10 - ship.length;
+    } else if (direction === "y" && 10 * x + y - 10 + ship.length * 10 > 90) {
+      x = 10 - ship.length;
+    }
     // eslint-disable-next-line no-param-reassign
     ship.head = this.placeShip(x, y, ship.length, ship.id, direction);
     this.ships.push(ship);
@@ -69,8 +74,8 @@ export default class Gameboard {
     const elements = this.map.children;
     elements[this.grid[x][y].elementNum].id = "ship";
     if (direction === "x") y++;
-    else x++;
-    return this.placeShipDOM(x, y, next.shipInfo.next);
+    else if (direction === "y") x++;
+    return this.placeShipDOM(x, y, next.shipInfo.next, direction);
   }
 
   getGrid() {

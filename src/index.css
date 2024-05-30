@@ -94,6 +94,6 @@ h2 {
   border: 0;
 }
 
-#ship {
+#myContainers > #ship {
   background-color: rgba(255, 111, 0, 0.5);
 }

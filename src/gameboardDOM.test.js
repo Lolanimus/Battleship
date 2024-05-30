@@ -104,3 +104,14 @@ test("places a ship DOM(y direction)", () => {
   expect(myMap.children[10].id).toBe("ship");
   expect(myMap.children[20].id).toBe("ship");
 });
+
+test("placeShip places a ship within boundaries", () => {
+  const myMap = document.getElementById("myContainers");
+  const gb1 = new Gameboard(myMap);
+  const x = 0;
+  const y = 9;
+  const ship30 = new Ship(3, 0);
+  gb1.renderGrid();
+  gb1.createShip(x, y, ship30);
+  expect(gb1.getGrid()).toBe(90);
+});
