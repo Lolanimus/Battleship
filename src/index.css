@@ -49,3 +49,7 @@ h2 {
   flex-basis: 5;
   border: 0.1px solid black;
 }
+
+#ship {
+  background-color: rgba(136, 66, 66, 0.5);
+}

@@ -1,6 +1,7 @@
 import "./index.css";
 import Player from "./player";
 import Gameboard from "./gameboard";
+import Ship from "./ship";
 
 console.log("kek");
 
@@ -17,3 +18,6 @@ meGb.renderGrid();
 
 const opponentGb = opponent.getGameboard();
 opponentGb.renderGrid();
+
+const myShip30 = new Ship(3, 0);
+meGb.createShip(0, 0, myShip30);
