@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-plusplus */
@@ -34,16 +35,31 @@ export default class Gameboard {
     return this.grid[x][y];
   }
 
+  isClose(x, y, length, direction) {
+    if (length < 1) return false;
+    else if (this.grid[x][y] !== undefined) return true;
+    else
+      return direction === "x"
+        ? this.isClose(x, y + 1, length - 1, direction)
+        : this.isClose(x + 1, y, length - 1, direction);
+  }
+
   createShip(x, y, ship, direction = "x") {
     if (direction === "x" && y + ship.length > 9) {
       y = 10 - ship.length;
     } else if (direction === "y" && 10 * x + y - 10 + ship.length * 10 > 90) {
       x = 10 - ship.length;
     }
+    // const isClose = this.isClose(x, y, ship.length, direction);
+    // console.log(isClose);
+    // if (isClose) {
+    //   if(direction === 'x') this.createShip(x + 1, )
+    // } else {
     // eslint-disable-next-line no-param-reassign
     ship.head = this.placeShip(x, y, ship.length, ship.id, direction);
     this.ships.push(ship);
     this.placeShipDOM(x, y, ship.head, direction);
+    // }
   }
 
   receiveAttack(x, y) {
@@ -59,6 +75,29 @@ export default class Gameboard {
     }
 
     if (this.ships.every((obj) => obj.isSunk())) this.isAllShipsSunk = true;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  hitOnDOM(elements, gb, i) {
+    console.log("klek");
+    const f = i;
+    const x = Math.floor(f / 10);
+    const y = f % 10;
+    const grid = gb.getGrid();
+    const ships = gb.getShips();
+    let selectedShip;
+    console.log(grid);
+    if (
+      grid[x][y].shipInfo.id !== undefined &&
+      !elements[f].classList.contains("hit")
+    ) {
+      elements[f].classList.add("hit");
+      const shipId = grid[x][y].shipInfo.id;
+      ships.forEach((ship) => {
+        if (ship.id === shipId) selectedShip = ship;
+      });
+      selectedShip.hit();
+    }
   }
 
   renderGrid() {
@@ -80,5 +119,9 @@ export default class Gameboard {
 
   getGrid() {
     return this.grid;
+  }
+
+  getShips() {
+    return this.ships;
   }
 }
