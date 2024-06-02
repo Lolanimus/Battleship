@@ -67,7 +67,6 @@ export default class Gameboard {
     if (this.grid[x][y] === undefined) this.missedAttacks.push([x, y]);
     else {
       this.ships.forEach((el) => {
-        console.log(el);
         if (el.id === this.grid[x][y].shipInfo.id) {
           el.hit();
         }
@@ -79,31 +78,24 @@ export default class Gameboard {
 
   // eslint-disable-next-line class-methods-use-this
   hitOnDOM(elements, gb, i) {
-    console.log("klek");
     const f = i;
     const x = Math.floor(f / 10);
     const y = f % 10;
     const grid = gb.getGrid();
-    const ships = gb.getShips();
-    let selectedShip;
-    console.log(grid);
-    if (
-      grid[x][y].shipInfo.id !== undefined &&
-      !elements[f].classList.contains("hit")
-    ) {
+    console.log(grid[x][y]);
+    if (grid[x][y] !== undefined && !elements[f].classList.contains("hit")) {
       elements[f].classList.add("hit");
-      const shipId = grid[x][y].shipInfo.id;
-      ships.forEach((ship) => {
-        if (ship.id === shipId) selectedShip = ship;
-      });
-      selectedShip.hit();
+      elements[f].disabled = true;
+      this.receiveAttack(x, y);
+    } else {
+      console.log("missed the attack");
     }
   }
 
   renderGrid() {
     let inHtml = "";
     for (let i = 0; i < 100; i++) {
-      inHtml += "<div id='null'></div>";
+      inHtml += "<div></div>";
     }
     this.map.innerHTML += inHtml;
   }

@@ -176,5 +176,8 @@ test("hits on DOM", () => {
   const myElements = myContainers.querySelectorAll("div");
 
   meGb.hitOnDOM(myElements, meGb, 1);
-  expect(myElements[1]).toBe(true);
+  expect(myElements[1].className).toBe("hit");
+
+  meGb.hitOnDOM(myElements, meGb, 12);
+  expect(myElements[12]).toBe(true);
 });

@@ -95,7 +95,6 @@ h2 {
 }
 
 #myContainers > #ship {
-  pointer-events: none; /* Ensures the div doesn't interfere with mouse events */
   background-color: rgba(255, 111, 0, 0.5);
 }
 

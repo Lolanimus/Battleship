@@ -63,27 +63,10 @@ opponentGb.createShip(0, 4, opponentShip40, "y");
 const opponentElements = opponentMap.querySelectorAll("div");
 const myElements = myMap.querySelectorAll("div");
 
-// this works
-meGb.hitOnDOM(myElements, meGb, 1);
+// myElements.forEach((el, i) => {
+//   el.addEventListener("click", () => meGb.hitOnDOM(myElements, meGb, i));
+// });
 
-// this also works, but it doesnt wait for me to click
-myElements[1].addEventListener("click", meGb.hitOnDOM(myElements, meGb, 1));
-
-// this doesnt work
-myElements[1].addEventListener("click", () => {
-  console.log("kek");
-  meGb.hitOnDOM(myElements, meGb, 1);
-});
-
-// this one also doesnt work
-myElements.forEach((el, i) => {
-  console.log(el);
-  el.addEventListener("click", () => {
-    meGb.hitOnDOM(myElements, meGb, i);
-  });
-});
-
-// this works
 opponentElements.forEach((el, i) => {
   el.addEventListener("click", () => {
     opponentGb.hitOnDOM(opponentElements, opponentGb, i);
