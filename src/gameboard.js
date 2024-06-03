@@ -109,7 +109,7 @@ export default class Gameboard {
   renderGrid() {
     let inHtml = "";
     for (let i = 0; i < 100; i++) {
-      inHtml += "<div></div>";
+      inHtml += "<button></button>";
     }
     this.map.innerHTML += inHtml;
   }

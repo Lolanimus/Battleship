@@ -62,8 +62,8 @@ opponentGb.createShip(2, 0, opponentShip31, "y");
 opponentGb.createShip(0, 4, opponentShip40, "y");
 
 // attack funcitonality
-const opponentElements = opponentMap.querySelectorAll("div");
-const myElements = myMap.querySelectorAll("div");
+const opponentElements = opponentMap.querySelectorAll("button");
+const myElements = myMap.querySelectorAll("button");
 
 const compHistory = [];
 
