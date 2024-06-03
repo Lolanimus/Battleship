@@ -66,6 +66,7 @@ const opponentElements = opponentMap.querySelectorAll("div");
 const myElements = myMap.querySelectorAll("div");
 
 const compHistory = [];
+
 function attack(type, i) {
   // eslint-disable-next-line no-param-reassign
   if (type === "computer") {
@@ -86,19 +87,25 @@ function attack(type, i) {
   }
 }
 
-const controller = new AbortController();
+// for (let i = 0; i < 95; i++) {
+//   attack("computer");
+// }
+
 const gameStatus = document.getElementById("gameStatus");
 opponentElements.forEach((el, i) => {
   el.addEventListener("click", () => {
     if (!opponentGb.isAllShipsSunk && !meGb.isAllShipsSunk) {
       attack("real", i);
-      if (compHistory.length < 100) attack("computer");
-    } else if (opponentGb.isAllShipsSunk) {
-      gameStatus.innerHTML = "You Won!";
-      el.replaceWith(el.cloneNode(true));
-    } else if (meGb.isAllShipsSunk) {
-      gameStatus.innerHTML = "You lost!";
-      el.replaceWith(el.cloneNode(true));
+      if (opponentGb.isAllShipsSunk) {
+        gameStatus.innerHTML = "You Won!";
+        el.replaceWith(el.cloneNode(true));
+      } else {
+        if (compHistory.length < 100) attack("computer");
+        if (meGb.isAllShipsSunk) {
+          gameStatus.innerHTML = "You lost!";
+          el.replaceWith(el.cloneNode(true));
+        }
+      }
     }
   });
 });
