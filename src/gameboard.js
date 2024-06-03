@@ -92,7 +92,6 @@ export default class Gameboard {
     const x = Math.floor(f / 10);
     const y = f % 10;
     const grid = gb.getGrid();
-    console.log(grid[x][y]);
     if (!elements[f].classList.contains("hit")) {
       if (grid[x][y] !== undefined) {
         elements[f].classList.add("hit");
@@ -111,7 +110,7 @@ export default class Gameboard {
     for (let i = 0; i < 100; i++) {
       inHtml += "<button></button>";
     }
-    this.map.innerHTML += inHtml;
+    this.map.innerHTML = inHtml;
   }
 
   placeShipDOM(x, y, next, direction) {
@@ -129,5 +128,16 @@ export default class Gameboard {
 
   getShips() {
     return this.ships;
+  }
+
+  restart() {
+    this.isAllShipsSunk = false;
+    this.attacks = [];
+    this.missedAttacks = [];
+    this.grid = [];
+    this.ships = [];
+    for (let i = 0; i < 10; i++) {
+      this.grid.push(new Array(10));
+    }
   }
 }
