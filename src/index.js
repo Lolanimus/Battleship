@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 import "./index.css";
 import Player from "./player";
 import Gameboard from "./gameboard";
@@ -63,13 +65,41 @@ opponentGb.createShip(0, 4, opponentShip40, "y");
 const opponentElements = opponentMap.querySelectorAll("div");
 const myElements = myMap.querySelectorAll("div");
 
-// myElements.forEach((el, i) => {
-//   el.addEventListener("click", () => meGb.hitOnDOM(myElements, meGb, i));
-// });
+const compHistory = [];
+function attack(type, i) {
+  // eslint-disable-next-line no-param-reassign
+  if (type === "computer") {
+    i = Math.floor(Math.random() * 100);
+    let isRepeated = false;
+    compHistory.forEach((el) => {
+      if (el === i) isRepeated = true;
+    });
+    console.log(compHistory);
+    console.log(isRepeated);
+    if (isRepeated) attack("computer");
+    else {
+      compHistory.push(i);
+      meGb.hitOnDOM(myElements, meGb, i);
+    }
+  } else {
+    opponentGb.hitOnDOM(opponentElements, opponentGb, i);
+  }
+}
 
+const controller = new AbortController();
+const gameStatus = document.getElementById("gameStatus");
 opponentElements.forEach((el, i) => {
   el.addEventListener("click", () => {
-    opponentGb.hitOnDOM(opponentElements, opponentGb, i);
+    if (!opponentGb.isAllShipsSunk && !meGb.isAllShipsSunk) {
+      attack("real", i);
+      if (compHistory.length < 100) attack("computer");
+    } else if (opponentGb.isAllShipsSunk) {
+      gameStatus.innerHTML = "You Won!";
+      el.replaceWith(el.cloneNode(true));
+    } else if (meGb.isAllShipsSunk) {
+      gameStatus.innerHTML = "You lost!";
+      el.replaceWith(el.cloneNode(true));
+    }
   });
 });
 

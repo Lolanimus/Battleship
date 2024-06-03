@@ -64,6 +64,7 @@ export default class Gameboard {
 
   receiveAttack(x, y) {
     this.attacks.push([x, y]);
+    console.log(this.grid[x][y]);
     if (this.grid[x][y] === undefined) this.missedAttacks.push([x, y]);
     else {
       this.ships.forEach((el) => {
@@ -76,6 +77,15 @@ export default class Gameboard {
     if (this.ships.every((obj) => obj.isSunk())) this.isAllShipsSunk = true;
   }
 
+  missedAttacksOnDOM(elements, gb, x, y) {
+    const { missedAttacks } = gb;
+    const coordinates = missedAttacks.pop();
+    console.log(missedAttacks);
+    const elNum = 10 * coordinates[0] + coordinates[1];
+    elements[elNum].innerHTML = "X";
+    elements[elNum].disabled = true;
+  }
+
   // eslint-disable-next-line class-methods-use-this
   hitOnDOM(elements, gb, i) {
     const f = i;
@@ -83,11 +93,15 @@ export default class Gameboard {
     const y = f % 10;
     const grid = gb.getGrid();
     console.log(grid[x][y]);
-    if (grid[x][y] !== undefined && !elements[f].classList.contains("hit")) {
-      elements[f].classList.add("hit");
-      elements[f].disabled = true;
+    if (!elements[f].classList.contains("hit")) {
+      if (grid[x][y] !== undefined) {
+        elements[f].classList.add("hit");
+        elements[f].disabled = true;
+      }
       this.receiveAttack(x, y);
-    } else {
+      if (grid[x][y] === undefined) {
+        this.missedAttacksOnDOM(elements, gb, x, y);
+      }
       console.log("missed the attack");
     }
   }

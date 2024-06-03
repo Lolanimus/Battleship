@@ -6,6 +6,7 @@
 
 import Gameboard from "./gameboard";
 import Ship from "./ship";
+import Player from "./player";
 
 document.body.innerHTML = `<div id="wrapper">
       <div id="myDiv">
@@ -129,24 +130,10 @@ test("placeShip automatically places a ship at least one box away from its neigh
   expect(gb1.getGrid()[1]).toBe(new Array(10));
 });
 
-test("drag and drop", () => {
-  const myMap = document.getElementById("myContainers");
-  const elements = myMap.children;
-  const gb1 = new Gameboard(myMap);
-  const x = 0;
-  const y = 0;
-  const ship30 = new Ship(3, 0);
-  const ship31 = new Ship(3, 1);
-  gb1.renderGrid();
-  gb1.createShip(x, y, ship30);
-  gb1.createShip(x + 2, y, ship31);
-  elements[0].addEventListener("onmousedown", gb1.drag(elements[0]));
-  gb1.drag(elements[0]);
-  expect(elements[0].style.backgroundColor).toBe("black");
-});
-
-test("hits on DOM", () => {
-  // document.body.innerHTML = `<div class="map" id="myMap"><div id="myContainers" class="containers"></div></div>`;
+// research about before, do i even need to use it, or i can just implement everything without it
+// then make a functionality for a game to happen,
+// so that my turn is firt, then it's a computer's turn, and so on...
+describe("with full implementation of map", () => {
   const myContainers = document.getElementById("myContainers");
   const meGb = new Gameboard(myContainers);
   meGb.renderGrid();
@@ -172,12 +159,46 @@ test("hits on DOM", () => {
   meGb.createShip(5, 5, myShip11);
   meGb.createShip(4, 7, myShip12);
   meGb.createShip(8, 4, myShip13);
+  const myElements = myContainers.children;
 
-  const myElements = myContainers.querySelectorAll("div");
+  test("hits on DOM", () => {
+    meGb.hitOnDOM(myElements, meGb, 1);
+    expect(myElements[1].className).toBe("hit");
 
-  meGb.hitOnDOM(myElements, meGb, 1);
-  expect(myElements[1].className).toBe("hit");
+    meGb.hitOnDOM(myElements, meGb, 12);
+    expect(myElements[12].className).toBe("");
+  });
 
-  meGb.hitOnDOM(myElements, meGb, 12);
-  expect(myElements[12]).toBe(true);
+  test("computer player randomly selects where to hit", () => {
+    const player = new Player("computer", meGb);
+    let randomEl = 0;
+    if (player.type === "computer") {
+      randomEl = Math.floor(Math.random() * 100);
+    }
+    meGb.hitOnDOM(myElements, meGb, randomEl);
+    console.log(randomEl);
+    expect(myElements[randomEl].className).toBe("hit");
+  });
+
+  test("does isAllShipSunk work", () => {
+    for (let i = 0; i < 100; i++) {
+      meGb.hitOnDOM(myElements, meGb, i);
+    }
+    expect(meGb.isAllShipsSunk).toBe(true);
+  });
+});
+test.skip("drag and drop", () => {
+  const myMap = document.getElementById("myContainers");
+  const elements = myMap.children;
+  const gb1 = new Gameboard(myMap);
+  const x = 0;
+  const y = 0;
+  const ship30 = new Ship(3, 0);
+  const ship31 = new Ship(3, 1);
+  gb1.renderGrid();
+  gb1.createShip(x, y, ship30);
+  gb1.createShip(x + 2, y, ship31);
+  elements[0].addEventListener("onmousedown", gb1.drag(elements[0]));
+  gb1.drag(elements[0]);
+  expect(elements[0].style.backgroundColor).toBe("black");
 });

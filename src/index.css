@@ -101,3 +101,11 @@ h2 {
 .hit {
   background-color: red !important;
 }
+
+#opponentDiv {
+  position: relative;
+}
+#gameStatus {
+  position: absolute;
+  top: 78vh;
+}
