@@ -27,13 +27,6 @@ h2 {
   top: 15px;
 }
 
-#playBtn {
-  display: none;
-  position: absolute;
-  bottom: 20px;
-  margin: 20px;
-}
-
 .map {
   width: 200px;
   height: 200px;
@@ -111,4 +104,55 @@ h2 {
 #gameStatus {
   position: absolute;
   top: 78vh;
+}
+
+#restart {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 20px;
+  gap: 10px;
+}
+
+#myDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#coordDialog {
+  overflow-y: scroll;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form > div {
+  display: flex;
+  justify-content: center;
+  font-size: small;
+  gap: 15px;
+}
+
+form > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form > legend {
+  margin: 12px;
+}
+
+.inputDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+form > button {
+  margin: 30px;
 }

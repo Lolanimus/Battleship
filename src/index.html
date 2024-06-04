@@ -6,6 +6,68 @@
     <title>Document</title>
   </head>
   <body>
+    <dialog id="coordDialog">
+      <form method="dialog">
+        <legend>Coordinates of ships</legend>
+        <div>
+          <div>
+            <div class="inputDiv">
+              <legend>Coordinates for a Battleship</legend>
+              <label for="40x">X:</label><input type="text" id="40x" />
+              <label for="40y">Y:</label><input type="text" id="40y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the first Destroyer</legend>
+              <label for="30x">X:</label><input type="text" id="30x" />
+              <label for="30y">Y:</label><input type="text" id="30y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the second Destroyer</legend>
+              <label for="31x">X:</label><input type="text" id="31x" />
+              <label for="31y">Y:</label><input type="text" id="31y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the first Submarine</legend>
+              <label for="20x">X:</label><input type="text" id="20x" />
+              <label for="20y">Y:</label><input type="text" id="20y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the second Submarine</legend>
+              <label for="21x">X:</label><input type="text" id="21x" />
+              <label for="21y">Y:</label><input type="text" id="21y" />
+            </div>
+          </div>
+          <div>
+            <div class="inputDiv">
+              <legend>Coordinates for the third Submarine</legend>
+              <label for="22x">X:</label><input type="text" id="22x" />
+              <label for="22y">Y:</label><input type="text" id="22y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the first Patrol Boat</legend>
+              <label for="10x">X:</label><input type="text" id="10x" />
+              <label for="10y">Y:</label><input type="text" id="10y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the second Patrol Boat</legend>
+              <label for="11x">X:</label><input type="text" id="11x" />
+              <label for="11y">Y:</label><input type="text" id="11y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the third Patrol Boat</legend>
+              <label for="12x">X:</label><input type="text" id="12x" />
+              <label for="12y">Y:</label><input type="text" id="12y" />
+            </div>
+            <div class="inputDiv">
+              <legend>Coordinates for the fourth Patrol Boat</legend>
+              <label for="13x">X:</label><input type="text" id="13x" />
+              <label for="13y">Y:</label><input type="text" id="13y" />
+            </div>
+          </div>
+        </div>
+        <button>Submit</button>
+      </form>
+    </dialog>
     <div id="wrapper">
       <div id="myDiv">
         <h2>Your map</h2>
@@ -36,7 +98,10 @@
             <div>9</div>
           </div>
         </div>
-        <button id="playBtn">Restart?</button>
+        <div id="restart">
+          <button id="playBtn">Restart?</button>
+          <button id="placeShips">Enter coordinates for ships</button>
+        </div>
       </div>
       <div id="opponentDiv">
         <h2>Opponent's map</h2>

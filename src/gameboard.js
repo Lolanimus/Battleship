@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-else-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-const-assign */
@@ -77,7 +78,7 @@ export default class Gameboard {
     if (this.ships.every((obj) => obj.isSunk())) this.isAllShipsSunk = true;
   }
 
-  missedAttacksOnDOM(elements, gb, x, y) {
+  missedAttacksOnDOM(elements, gb) {
     const { missedAttacks } = gb;
     const coordinates = missedAttacks.pop();
     console.log(missedAttacks);

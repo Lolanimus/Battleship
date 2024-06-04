@@ -15,8 +15,11 @@ const opponentGb = opponent.getGameboard();
 
 let opponentElements = opponentMap.querySelectorAll("button");
 let myElements = myMap.querySelectorAll("button");
+const restart = document.getElementById("restart");
 const restartButton = document.getElementById("playBtn");
+const placeShipsBtn = document.getElementById("placeShips");
 const gameStatus = document.getElementById("gameStatus");
+const coordDialog = document.getElementById("coordDialog");
 
 function startGame() {
   meGb.renderGrid();
@@ -105,13 +108,13 @@ opponentElements.forEach((el, i) => {
       if (opponentGb.isAllShipsSunk) {
         gameStatus.innerHTML = "You Won!";
         el.replaceWith(el.cloneNode(true));
-        restartButton.style.display = "block";
+        restart.style.display = "flex";
       } else {
         if (compHistory.length < 100) attack("computer");
         if (meGb.isAllShipsSunk) {
           gameStatus.innerHTML = "You lost!";
           el.replaceWith(el.cloneNode(true));
-          restartButton.style.display = "block";
+          restart.style.display = "flex";
         }
       }
     }
@@ -128,7 +131,7 @@ restartButton.addEventListener("click", () => {
   myMap.innerHTML = "";
   meGb.renderGrid();
   startGame();
-  restartButton.style.display = "none";
+  restart.style.display = "none";
   opponentElements.forEach((el, i) => {
     el.addEventListener("click", () => {
       if (!opponentGb.isAllShipsSunk && !meGb.isAllShipsSunk) {
@@ -136,18 +139,22 @@ restartButton.addEventListener("click", () => {
         if (opponentGb.isAllShipsSunk) {
           gameStatus.innerHTML = "You Won!";
           el.replaceWith(el.cloneNode(true));
-          restartButton.style.display = "block";
+          restartButton.style.display = "flex";
         } else {
           if (compHistory.length < 100) attack("computer");
           if (meGb.isAllShipsSunk) {
             gameStatus.innerHTML = "You lost!";
             el.replaceWith(el.cloneNode(true));
-            restartButton.style.display = "block";
+            restartButton.style.display = "flex";
           }
         }
       }
     });
   });
+});
+
+placeShipsBtn.addEventListener("click", () => {
+  coordDialog.showModal();
 });
 
 // drag and drop functionality
