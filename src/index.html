@@ -10,62 +10,135 @@
       <form method="dialog">
         <legend>Coordinates of ships</legend>
         <div>
-          <div>
+          <div id="firstDiv">
             <div class="inputDiv">
               <legend>Coordinates for a Battleship</legend>
-              <label for="40x">X:</label><input type="text" id="40x" />
-              <label for="40y">Y:</label><input type="text" id="40y" />
+              <label for="40x">X:</label
+              ><input type="number" id="40x" min="0" max="9" required />
+              <label for="40y">Y:</label
+              ><input type="number" id="40y" min="0" max="9" required />
+              <label for="40dir">Direction: </label>
+              <select name="40dir" id="40dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the first Destroyer</legend>
-              <label for="30x">X:</label><input type="text" id="30x" />
-              <label for="30y">Y:</label><input type="text" id="30y" />
+              <label for="30x">X:</label
+              ><input type="number" id="30x" min="0" max="9" required />
+              <label for="30y">Y:</label
+              ><input type="number" id="30y" min="0" max="9" required />
+              <label for="30dir">Direction: </label>
+              <select name="30dir" id="30dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the second Destroyer</legend>
-              <label for="31x">X:</label><input type="text" id="31x" />
-              <label for="31y">Y:</label><input type="text" id="31y" />
+              <label for="31x">X:</label
+              ><input type="number" id="31x" min="0" max="9" required />
+              <label for="31y">Y:</label
+              ><input type="number" id="31y" min="0" max="9" required />
+              <label for="31dir">Direction: </label>
+              <select name="31dir" id="31dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the first Submarine</legend>
-              <label for="20x">X:</label><input type="text" id="20x" />
-              <label for="20y">Y:</label><input type="text" id="20y" />
+              <label for="20x">X:</label
+              ><input type="number" id="20x" min="0" max="9" required />
+              <label for="20y">Y:</label
+              ><input type="number" id="20y" min="0" max="9" required />
+              <label for="20dir">Direction: </label>
+              <select name="20dir" id="20dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the second Submarine</legend>
-              <label for="21x">X:</label><input type="text" id="21x" />
-              <label for="21y">Y:</label><input type="text" id="21y" />
+              <label for="21x">X:</label
+              ><input type="number" id="21x" min="0" max="9" required />
+              <label for="21y">Y:</label
+              ><input type="number" id="21y" min="0" max="9" required />
+              <label for="21dir">Direction: </label>
+              <select name="21dir" id="21dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
           </div>
-          <div>
+          <div id="secondDiv">
             <div class="inputDiv">
               <legend>Coordinates for the third Submarine</legend>
-              <label for="22x">X:</label><input type="text" id="22x" />
-              <label for="22y">Y:</label><input type="text" id="22y" />
+              <label for="22x">X:</label
+              ><input type="number" id="22x" min="0" max="9" required />
+              <label for="22y">Y:</label
+              ><input type="number" id="22y" min="0" max="9" required />
+              <label for="22dir">Direction: </label>
+              <select name="22dir" id="22dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the first Patrol Boat</legend>
-              <label for="10x">X:</label><input type="text" id="10x" />
-              <label for="10y">Y:</label><input type="text" id="10y" />
+              <label for="10x">X:</label
+              ><input type="number" id="10x" min="0" max="9" required />
+              <label for="10y">Y:</label
+              ><input type="number" id="10y" min="0" max="9" required />
+              <label for="10dir">Direction: </label>
+              <select name="10dir" id="10dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the second Patrol Boat</legend>
-              <label for="11x">X:</label><input type="text" id="11x" />
-              <label for="11y">Y:</label><input type="text" id="11y" />
+              <label for="11x">X:</label
+              ><input type="number" id="11x" min="0" max="9" required />
+              <label for="11y">Y:</label
+              ><input type="number" id="11y" min="0" max="9" required />
+              <label for="11dir">Direction: </label>
+              <select name="11dir" id="11dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the third Patrol Boat</legend>
-              <label for="12x">X:</label><input type="text" id="12x" />
-              <label for="12y">Y:</label><input type="text" id="12y" />
+              <label for="12x">X:</label
+              ><input type="number" id="12x" min="0" max="9" required />
+              <label for="12y">Y:</label
+              ><input type="number" id="12y" min="0" max="9" required />
+              <label for="12dir">Direction: </label>
+              <select name="12dir" id="12dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
             <div class="inputDiv">
               <legend>Coordinates for the fourth Patrol Boat</legend>
-              <label for="13x">X:</label><input type="text" id="13x" />
-              <label for="13y">Y:</label><input type="text" id="13y" />
+              <label for="13x">X:</label
+              ><input type="number" id="13x" min="0" max="9" required />
+              <label for="13y">Y:</label
+              ><input type="number" id="13y" min="0" max="9" required />
+              <label for="13dir">Direction: </label>
+              <select name="13dir" id="13dir">
+                <option value="x">X</option>
+                <option value="y">Y</option>
+              </select>
             </div>
           </div>
         </div>
-        <button>Submit</button>
+        <div id="formBtns">
+          <button id="submitFormBtn">Submit</button>
+          <button id="cancelFormBtn">Cancel</button>
+        </div>
       </form>
     </dialog>
     <div id="wrapper">

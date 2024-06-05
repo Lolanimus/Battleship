@@ -60,6 +60,7 @@ export default class Gameboard {
     ship.head = this.placeShip(x, y, ship.length, ship.id, direction);
     this.ships.push(ship);
     this.placeShipDOM(x, y, ship.head, direction);
+    console.log(this.ships);
     // }
   }
 

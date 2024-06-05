@@ -153,6 +153,12 @@ form > legend {
   flex-direction: column;
 }
 
-form > button {
+#restart {
+  display: none;
   margin: 30px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  top: 80%;
 }
